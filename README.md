@@ -131,7 +131,6 @@ Hello CoralBlocks from JNR! => Awesome
 ```
 
 ### [FFM](https://docs.oracle.com/en/java/javase/21/core/foreign-function-and-memory-api.html)
-###### (Thanks to [Steven Curran](https://github.com/StevenCurran))
 - Check the [Java code](https://github.com/coralblocks/JavaToCppAndBack/blob/main/src/main/java/com/coralblocks/javatocppandback/ffm/HelloWorld.java)
 - Check the [C++ code](https://github.com/coralblocks/JavaToCppAndBack/blob/main/src/main/c/com_coralblocks_javatocppandback_ffm_HelloWorld.cpp)
 ###### MacOS
