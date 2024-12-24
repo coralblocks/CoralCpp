@@ -183,6 +183,30 @@ Hello CoralBlocks from JExtract! => Awesome
 Hello CoralBlocks from JExtract! => Awesome
 ```
 
+### [BridJ](https://github.com/nativelibs4java/BridJ)
+- Check the [Java code](https://github.com/coralblocks/JavaToCppAndBack/blob/main/src/main/java/com/coralblocks/javatocppandback/bridj/HelloWorld.java)
+- Check the [C++ code](https://github.com/coralblocks/JavaToCppAndBack/blob/main/src/main/c/com_coralblocks_javatocppandback_bridj_HelloWorld.cpp)
+###### MacOS
+- [Compile](https://github.com/coralblocks/JavaToCppAndBack/blob/main/bin/mac/bridj/compileJava.sh) the Java code
+- [Compile](https://github.com/coralblocks/JavaToCppAndBack/blob/main/bin/mac/bridj/compileCpp.sh) the C++ code
+- [Run](https://github.com/coralblocks/JavaToCppAndBack/blob/main/bin/mac/bridj/runJava.sh) the Java code
+```
+# For Mac
+$ ./bin/mac/bridj/all.sh 2 Awesome
+Hello CoralBlocks from BridJ! => Awesome
+Hello CoralBlocks from BridJ! => Awesome
+```
+###### Linux
+- [Compile](https://github.com/coralblocks/JavaToCppAndBack/blob/main/bin/linux/bridj/compileJava.sh) the Java code
+- [Compile](https://github.com/coralblocks/JavaToCppAndBack/blob/main/bin/linux/bridj/compileCpp.sh) the C++ code
+- [Run](https://github.com/coralblocks/JavaToCppAndBack/blob/main/bin/linux/bridj/runJava.sh) the Java code
+```
+# For Linux
+$ ./bin/linux/bridj/all.sh 2 Awesome
+Hello CoralBlocks from BridJ! => Awesome
+Hello CoralBlocks from BridJ! => Awesome
+```
+
 ## C++ calling Java
 
 ### [JNI](https://docs.oracle.com/javase/8/docs/technotes/guides/jni/spec/invocation.html)
