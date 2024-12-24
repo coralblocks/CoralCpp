@@ -14,7 +14,7 @@
  * governing permissions and limitations under the License.
  */
 #include <iostream>
-#include "com_coralblocks_javatocppandback_ffm_jextract_HelloWorld.h"
+#include "com_coralblocks_coralcpp_ffm_jextract_HelloWorld.h"
 
 extern "C" void sayHello(int count, const char* cmsg) {
 

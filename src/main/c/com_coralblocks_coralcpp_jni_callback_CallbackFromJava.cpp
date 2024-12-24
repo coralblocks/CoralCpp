@@ -15,7 +15,7 @@
  */
 #include <iostream>
 #include <jni.h>
-#include "com_coralblocks_javatocppandback_jni_callback_CallbackFromJavaSharedLib.h"
+#include "com_coralblocks_coralcpp_jni_callback_CallbackFromJavaSharedLib.h"
 
 void hi_from_java(long l) {
     std::cout << "Received callback from Java: " << l << std::endl;
@@ -40,7 +40,7 @@ int main(int argc, char **argv) {
     JNI_CreateJavaVM(&jvm, (void**)&env, &vm_args);
 
     // Instantiate the CallbackFromJava object
-    jclass callbackFromJavaClass = env->FindClass("com/coralblocks/javatocppandback/jni_callback/CallbackFromJava");
+    jclass callbackFromJavaClass = env->FindClass("com/coralblocks/coralcpp/jni_callback/CallbackFromJava");
     jmethodID callbackFromJavaConstructor = env->GetMethodID(callbackFromJavaClass, "<init>", "(I)V");
     jobject callbackFromJavaObject = env->NewObject(callbackFromJavaClass, callbackFromJavaConstructor, (jint) x);
 

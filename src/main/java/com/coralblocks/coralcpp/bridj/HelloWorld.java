@@ -13,13 +13,28 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package com.coralblocks.javatocppandback.jni_jvm;
+package com.coralblocks.coralcpp.bridj;
 
+import org.bridj.BridJ;
+import org.bridj.ann.Library;
+import org.bridj.ann.Convention;
+import org.bridj.ann.Convention.Style;
+import org.bridj.Pointer;
+
+@Library("HelloWorld")
+@Convention(Style.CDecl)
 public class HelloWorld {
 
-    public static void sayHello(int count, String msg) {
-	    for(int i = 0; i < count; i++) {
-            System.out.println("Hello CoralBlocks from JNI-JVM! => " + msg);    
-        }
+    static {
+        BridJ.register();
     }
+
+    private static native void sayHello(int count, Pointer<Byte> msg);
+
+    public static void main(String[] args) {
+        int count = Integer.parseInt(args[0]);
+        String msg = args[1];
+        HelloWorld.sayHello(count, Pointer.pointerToCString(msg));
+    }
+    
 }

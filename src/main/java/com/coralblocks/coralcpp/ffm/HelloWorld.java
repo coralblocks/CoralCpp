@@ -13,13 +13,15 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package com.coralblocks.javatocppandback.ffm_jextract;
-
-import com.coralblocks.javatocppandback.ffm_jextract.generated.Hello;
+package com.coralblocks.coralcpp.ffm;
 
 import java.lang.foreign.Arena;
-import java.lang.foreign.MemorySegment;
+import java.lang.foreign.FunctionDescriptor;
+import java.lang.foreign.Linker;
+import java.lang.foreign.SymbolLookup;
 import java.lang.foreign.ValueLayout;
+import java.lang.foreign.MemorySegment;
+import java.lang.invoke.MethodHandle;
 import java.nio.charset.StandardCharsets;
 
 public class HelloWorld {
@@ -32,13 +34,22 @@ public class HelloWorld {
        return cStr;
     }
 
-    public static void main(String[] args) {
-        
-        System.loadLibrary("HelloWorld");
+    public static void main(String[] args) throws Throwable {
 
         int count = Integer.parseInt(args[0]);
         String msg = args[1];
 
-        Hello.sayHello(count, allocateUtf8String(Arena.ofConfined(), msg));
+        Arena arena = Arena.ofConfined();
+        Linker linker = Linker.nativeLinker();
+
+        System.loadLibrary("HelloWorld");
+        SymbolLookup lookup = SymbolLookup.loaderLookup();
+
+        MemorySegment sayHello = lookup.find("sayHello").get();
+        FunctionDescriptor sayHello_sig = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+        MethodHandle sayHello_method = linker.downcallHandle(sayHello, sayHello_sig);
+
+        sayHello_method.invokeExact(count, allocateUtf8String(arena, msg));
+        
     }
 }

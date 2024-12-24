@@ -13,22 +13,28 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package com.coralblocks.javatocppandback.jna;
-
-import com.sun.jna.Library;
-import com.sun.jna.Native;
+package com.coralblocks.coralcpp.jni_bind;
 
 public class HelloWorld {
 
-    public interface HelloWorldLib extends Library {
-        HelloWorldLib INSTANCE = Native.load("HelloWorld", HelloWorldLib.class);
-        void sayHello(int count, String msg);
+    static {
+        System.loadLibrary("HelloWorld");
     }
-    
-    public static void main(String[] args) {
+
+    public void sayHello(int count, String msg) {
+        for(int i = 0; i < count; i++) {
+            System.out.println("Hello CoralBlocks from JNI-Bind! => " + msg);
+        }
+    }
+
+    private static native void goToNativeSide(int count, String msg);
+
+    private static native void tearDownJvm();
+
+    public static void main(String[] args) throws Exception {
         int count = Integer.parseInt(args[0]);
         String msg = args[1];
-        HelloWorldLib lib = HelloWorldLib.INSTANCE;
-        lib.sayHello(count, msg);
+        goToNativeSide(count, msg);
+        tearDownJvm(); // for JNI-Bind, this is necessary to avoid an exception when the JVM exits...
     }
 }

@@ -13,21 +13,21 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package com.coralblocks.javatocppandback.jni;
+package com.coralblocks.coralcpp.jnr;
+
+import jnr.ffi.LibraryLoader;
 
 public class HelloWorld {
 
-    static {
-        System.loadLibrary("HelloWorld"); // load libHelloWorld.so
+    public interface HelloWorldLib {
+        void sayHello(int count, String msg);
     }
-
-    private native void sayHello(int count, String msg);
 
     public static void main(String[] args) {
         int count = Integer.parseInt(args[0]);
         String msg = args[1];
-        HelloWorld helloWorld = new HelloWorld();
-        helloWorld.sayHello(count, msg);
+        HelloWorldLib lib = LibraryLoader.create(HelloWorldLib.class).load("HelloWorld");
+        lib.sayHello(count, msg);
     }
 }
 

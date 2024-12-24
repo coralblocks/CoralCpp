@@ -34,7 +34,7 @@ int main(int argc, char **argv) {
     // Load and initialize the JVM
     JNI_CreateJavaVM(&jvm, (void**)&env, &vm_args);
 
-    jclass helloWorldClass = env->FindClass("com/coralblocks/javatocppandback/jni_jvm/HelloWorld");
+    jclass helloWorldClass = env->FindClass("com/coralblocks/coralcpp/jni_jvm/HelloWorld");
     jmethodID sayHelloMethod = env->GetStaticMethodID(helloWorldClass, "sayHello", "(ILjava/lang/String;)V");
     jstring cmsg = env->NewStringUTF(str.c_str());
     env->CallStaticVoidMethod(helloWorldClass, sayHelloMethod, (jint) x, cmsg);

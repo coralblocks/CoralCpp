@@ -13,21 +13,20 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package com.coralblocks.javatocppandback.jnr;
+package com.coralblocks.coralcpp.graal;
 
-import jnr.ffi.LibraryLoader;
+import org.graalvm.nativeimage.IsolateThread;
+import org.graalvm.nativeimage.c.function.CEntryPoint;
+import org.graalvm.nativeimage.c.type.CCharPointer;
+import org.graalvm.nativeimage.c.type.CTypeConversion;
 
 public class HelloWorld {
 
-    public interface HelloWorldLib {
-        void sayHello(int count, String msg);
-    }
-
-    public static void main(String[] args) {
-        int count = Integer.parseInt(args[0]);
-        String msg = args[1];
-        HelloWorldLib lib = LibraryLoader.create(HelloWorldLib.class).load("HelloWorld");
-        lib.sayHello(count, msg);
+    @CEntryPoint(name = "say_hello")
+    public static void sayHello(IsolateThread thread, int count, CCharPointer cmsg) {
+	String msg = CTypeConversion.toJavaString(cmsg);
+	for(int i = 0; i < count; i++) {
+            System.out.println("Hello CoralBlocks from GraalVM Native-Image! => " + msg);    
+        }
     }
 }
-

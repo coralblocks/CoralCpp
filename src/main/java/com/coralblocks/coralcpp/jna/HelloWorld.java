@@ -13,15 +13,22 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-#include <iostream>
-#include <jni.h>
-#include "com_coralblocks_javatocppandback_jni_HelloWorld.h"
+package com.coralblocks.coralcpp.jna;
 
-JNIEXPORT void JNICALL Java_com_coralblocks_javatocppandback_jni_HelloWorld_sayHello
-  (JNIEnv * env, jobject obj, jint count, jstring msg) {
-    const char* cmsg = env->GetStringUTFChars(msg, nullptr);
-    for(int i = 0; i < count; i++) {
-        std::cout << "Hello CoralBlocks from JNI! => " << cmsg << std::endl;
+import com.sun.jna.Library;
+import com.sun.jna.Native;
+
+public class HelloWorld {
+
+    public interface HelloWorldLib extends Library {
+        HelloWorldLib INSTANCE = Native.load("HelloWorld", HelloWorldLib.class);
+        void sayHello(int count, String msg);
     }
-    env->ReleaseStringUTFChars(msg, cmsg);
+    
+    public static void main(String[] args) {
+        int count = Integer.parseInt(args[0]);
+        String msg = args[1];
+        HelloWorldLib lib = HelloWorldLib.INSTANCE;
+        lib.sayHello(count, msg);
+    }
 }

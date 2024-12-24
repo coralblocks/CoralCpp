@@ -13,28 +13,15 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package com.coralblocks.javatocppandback.bridj;
+#include <iostream>
+#include <jni.h>
+#include "com_coralblocks_coralcpp_jni_HelloWorld.h"
 
-import org.bridj.BridJ;
-import org.bridj.ann.Library;
-import org.bridj.ann.Convention;
-import org.bridj.ann.Convention.Style;
-import org.bridj.Pointer;
-
-@Library("HelloWorld")
-@Convention(Style.CDecl)
-public class HelloWorld {
-
-    static {
-        BridJ.register();
+JNIEXPORT void JNICALL Java_com_coralblocks_coralcpp_jni_HelloWorld_sayHello
+  (JNIEnv * env, jobject obj, jint count, jstring msg) {
+    const char* cmsg = env->GetStringUTFChars(msg, nullptr);
+    for(int i = 0; i < count; i++) {
+        std::cout << "Hello CoralBlocks from JNI! => " << cmsg << std::endl;
     }
-
-    private static native void sayHello(int count, Pointer<Byte> msg);
-
-    public static void main(String[] args) {
-        int count = Integer.parseInt(args[0]);
-        String msg = args[1];
-        HelloWorld.sayHello(count, Pointer.pointerToCString(msg));
-    }
-    
+    env->ReleaseStringUTFChars(msg, cmsg);
 }
