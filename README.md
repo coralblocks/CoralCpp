@@ -1,5 +1,5 @@
 # CoralCpp
-Call Java from C++ and C++ from Java with a variety of old and new projects like JNI, JNA, JNR, FFM, JExtract, GraalVM, JNI-Bind, etc.
+Call Java from C++ and C++ from Java with a variety of old and new projects like JNI, JNA, JNR, FFM, JExtract, BridJ, GraalVM, JNI-Bind, etc.
 
 This project is intended to be used as a quick reference on how to get going with Java and C++ integration, from both sides. It is a _step-by-step_ guide, in the form of shell scripts (for Linux and MacOS) to compile and run the C++ and Java examples, so you don't have to guess anything. Just see "_Hello World!_" popping up in your terminal to celebrate! :champagne: :tada: :confetti_ball:
 
