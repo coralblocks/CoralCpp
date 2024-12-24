@@ -5,8 +5,9 @@ This project is intended to be used as a quick reference on how to get going wit
 
 #### MacOS
 ```
-$ uname -a
+$ $ uname -a; sw_vers | grep ProductVersion
 Darwin MacBook-Air.local 22.6.0 Darwin Kernel Version 22.6.0: Wed Jul  5 22:17:35 PDT 2023; root:xnu-8796.141.3~6/RELEASE_ARM64_T8112 arm64
+ProductVersion:		13.5.2
 
 $ java -version
 java version "23.0.1" 2024-10-15
@@ -31,8 +32,9 @@ LibClang version clang version 13.0.0
 ```
 #### Linux
 ```
-$ uname -a
-Linux cleveland 5.15.0-72-generic #79-Ubuntu SMP Tue Apr 18 16:53:43 UTC 2023 aarch64 aarch64 aarch64 GNU/Linux
+$ uname -a; cat /etc/issue
+Linux cleveland 5.15.0-125-generic #135-Ubuntu SMP Fri Sep 27 13:56:10 UTC 2024 aarch64 aarch64 aarch64 GNU/Linux
+Ubuntu 22.04.3 LTS \n \l
 
 $ java -version
 java version "23.0.1" 2024-10-15
