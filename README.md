@@ -9,9 +9,10 @@ Feel free to use our official <a href="https://hub.docker.com/r/coralblocks/cora
 
 #### MacOS
 ```
-$ $ uname -a; sw_vers | grep ProductVersion
+$ uname -a; sw_vers | grep ProductVersion | arch
 Darwin MacBook-Air.local 22.6.0 Darwin Kernel Version 22.6.0: Wed Jul  5 22:17:35 PDT 2023; root:xnu-8796.141.3~6/RELEASE_ARM64_T8112 arm64
 ProductVersion:		13.5.2
+arm64
 
 $ java -version
 java version "23.0.1" 2024-10-15
@@ -36,9 +37,10 @@ LibClang version clang version 13.0.0
 ```
 #### Linux
 ```
-$ uname -a; cat /etc/issue
-Linux cleveland 5.15.0-125-generic #135-Ubuntu SMP Fri Sep 27 13:56:10 UTC 2024 aarch64 aarch64 aarch64 GNU/Linux
-Ubuntu 22.04.3 LTS \n \l
+$ (uname -a; cat /etc/issue; arch) | grep -v '^$'
+Linux 2d4c02259081 4.15.0-188-generic #199-Ubuntu SMP Wed Jun 15 20:42:56 UTC 2022 x86_64 x86_64 x86_64 GNU/Linux
+Ubuntu 22.04.5 LTS \n \l
+x86_64
 
 $ java -version
 java version "23.0.1" 2024-10-15
@@ -47,7 +49,7 @@ Java HotSpot(TM) 64-Bit Server VM Oracle GraalVM 23.0.1+11.1 (build 23.0.1+11-jv
 
 $ clang++ --version
 Ubuntu clang version 18.1.8 (++20240731024944+3b5b5c1ec4a3-1~exp1~20240731145000.144)
-Target: aarch64-unknown-linux-gnu
+Target: x86_64-pc-linux-gnu
 Thread model: posix
 InstalledDir: /usr/bin
 
