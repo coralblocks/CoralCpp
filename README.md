@@ -9,25 +9,25 @@ $ uname -a
 Darwin MacBook-Air.local 22.6.0 Darwin Kernel Version 22.6.0: Wed Jul  5 22:17:35 PDT 2023; root:xnu-8796.141.3~6/RELEASE_ARM64_T8112 arm64
 
 $ java -version
-java version "21.0.1" 2023-10-17
-Java(TM) SE Runtime Environment Oracle GraalVM 21.0.1+12.1 (build 21.0.1+12-jvmci-23.1-b19)
-Java HotSpot(TM) 64-Bit Server VM Oracle GraalVM 21.0.1+12.1 (build 21.0.1+12-jvmci-23.1-b19, mixed mode, sharing)
+java version "23.0.1" 2024-10-15
+Java(TM) SE Runtime Environment Oracle GraalVM 23.0.1+11.1 (build 23.0.1+11-jvmci-b01)
+Java HotSpot(TM) 64-Bit Server VM Oracle GraalVM 23.0.1+11.1 (build 23.0.1+11-jvmci-b01, mixed mode, sharing)
 
 $ clang++ --version
-Apple clang version 14.0.3 (clang-1403.0.22.14.1)
+Homebrew clang version 18.1.8
 Target: arm64-apple-darwin22.6.0
 Thread model: posix
-InstalledDir: /Library/Developer/CommandLineTools/usr/bin
+InstalledDir: /opt/homebrew/opt/llvm@18/bin
 
 $ native-image --version
-native-image 21.0.1 2023-10-17
-GraalVM Runtime Environment Oracle GraalVM 21.0.1+12.1 (build 21.0.1+12-jvmci-23.1-b19)
-Substrate VM Oracle GraalVM 21.0.1+12.1 (build 21.0.1+12, serial gc, compressed references)
+native-image 23.0.1 2024-10-15
+GraalVM Runtime Environment Oracle GraalVM 23.0.1+11.1 (build 23.0.1+11-jvmci-b01)
+Substrate VM Oracle GraalVM 23.0.1+11.1 (build 23.0.1+11, serial gc, compressed references)
 
 $ jextract --version
-jextract 21
-JDK version 21.0.1+12-LTS-29
-Apple clang version 14.0.3 (clang-1403.0.22.14.1)
+jextract 22
+JDK version 22+35-2369
+LibClang version clang version 13.0.0
 ```
 #### Linux
 ```
@@ -35,25 +35,25 @@ $ uname -a
 Linux cleveland 5.15.0-72-generic #79-Ubuntu SMP Tue Apr 18 16:53:43 UTC 2023 aarch64 aarch64 aarch64 GNU/Linux
 
 $ java -version
-java version "21.0.1" 2023-10-17
-Java(TM) SE Runtime Environment Oracle GraalVM 21.0.1+12.1 (build 21.0.1+12-jvmci-23.1-b19)
-Java HotSpot(TM) 64-Bit Server VM Oracle GraalVM 21.0.1+12.1 (build 21.0.1+12-jvmci-23.1-b19, mixed mode, sharing)
+java version "23.0.1" 2024-10-15
+Java(TM) SE Runtime Environment Oracle GraalVM 23.0.1+11.1 (build 23.0.1+11-jvmci-b01)
+Java HotSpot(TM) 64-Bit Server VM Oracle GraalVM 23.0.1+11.1 (build 23.0.1+11-jvmci-b01, mixed mode, sharing)
 
 $ clang++ --version
-Ubuntu clang version 14.0.0-1ubuntu1.1
+Ubuntu clang version 18.1.8 (++20240731024944+3b5b5c1ec4a3-1~exp1~20240731145000.144)
 Target: aarch64-unknown-linux-gnu
 Thread model: posix
 InstalledDir: /usr/bin
 
 $ native-image --version
-native-image 21.0.1 2023-10-17
-GraalVM Runtime Environment Oracle GraalVM 21.0.1+12.1 (build 21.0.1+12-jvmci-23.1-b19)
-Substrate VM Oracle GraalVM 21.0.1+12.1 (build 21.0.1+12, serial gc, compressed references)
+native-image 23.0.1 2024-10-15
+GraalVM Runtime Environment Oracle GraalVM 23.0.1+11.1 (build 23.0.1+11-jvmci-b01)
+Substrate VM Oracle GraalVM 23.0.1+11.1 (build 23.0.1+11, serial gc, compressed references)
 
 $ jextract --version
-jextract 21
-JDK version 21.0.1+12-jvmci-23.1-b19
-Ubuntu clang version 14.0.0-1ubuntu1.1
+jextract 22
+JDK version 22+35-2369
+LibClang version clang version 13.0.0
 ```
 
 ## Java calling C++
