@@ -9,7 +9,7 @@ Feel free to use our official <a href="https://hub.docker.com/r/coralblocks/cora
 
 #### MacOS
 ```
-$ uname -a; sw_vers | grep ProductVersion | arch
+$ uname -a; sw_vers | grep ProductVersion; arch
 Darwin MacBook-Air.local 22.6.0 Darwin Kernel Version 22.6.0: Wed Jul  5 22:17:35 PDT 2023; root:xnu-8796.141.3~6/RELEASE_ARM64_T8112 arm64
 ProductVersion:		13.5.2
 arm64
