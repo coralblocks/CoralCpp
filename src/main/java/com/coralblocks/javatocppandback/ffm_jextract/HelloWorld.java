@@ -18,8 +18,19 @@ package com.coralblocks.javatocppandback.ffm_jextract;
 import com.coralblocks.javatocppandback.ffm_jextract.generated.Hello;
 
 import java.lang.foreign.Arena;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
+import java.nio.charset.StandardCharsets;
 
 public class HelloWorld {
+
+    static MemorySegment allocateUtf8String(Arena arena, String text) {
+       byte[] bytes = text.getBytes(StandardCharsets.UTF_8);
+       MemorySegment cStr = arena.allocate(ValueLayout.JAVA_BYTE, bytes.length + 1);
+       cStr.copyFrom(MemorySegment.ofArray(bytes));
+       cStr.set(ValueLayout.JAVA_BYTE, bytes.length, (byte) 0);  // null terminator
+       return cStr;
+    }
 
     public static void main(String[] args) {
         
@@ -28,6 +39,6 @@ public class HelloWorld {
         int count = Integer.parseInt(args[0]);
         String msg = args[1];
 
-        Hello.sayHello(count, Arena.ofConfined().allocateUtf8String(msg));
+        Hello.sayHello(count, allocateUtf8String(Arena.ofConfined(), msg));
     }
 }

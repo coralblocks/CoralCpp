@@ -1,5 +1,5 @@
 #!/bin/bash
 
-javac --enable-preview -source 21 -d classes src/main/java/com/coralblocks/javatocppandback/ffm_jextract/generated/*.java src/main/java/com/coralblocks/javatocppandback/ffm_jextract/HelloWorld.java
+javac -d classes src/main/java/com/coralblocks/javatocppandback/ffm_jextract/generated/*.java src/main/java/com/coralblocks/javatocppandback/ffm_jextract/HelloWorld.java
 
 

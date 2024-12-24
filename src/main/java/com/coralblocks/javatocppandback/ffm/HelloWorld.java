@@ -22,8 +22,17 @@ import java.lang.foreign.SymbolLookup;
 import java.lang.foreign.ValueLayout;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
+import java.nio.charset.StandardCharsets;
 
 public class HelloWorld {
+
+    static MemorySegment allocateUtf8String(Arena arena, String text) {
+       byte[] bytes = text.getBytes(StandardCharsets.UTF_8);
+       MemorySegment cStr = arena.allocate(ValueLayout.JAVA_BYTE, bytes.length + 1);
+       cStr.copyFrom(MemorySegment.ofArray(bytes));
+       cStr.set(ValueLayout.JAVA_BYTE, bytes.length, (byte) 0);  // null terminator
+       return cStr;
+    }
 
     public static void main(String[] args) throws Throwable {
 
@@ -40,7 +49,7 @@ public class HelloWorld {
         FunctionDescriptor sayHello_sig = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         MethodHandle sayHello_method = linker.downcallHandle(sayHello, sayHello_sig);
 
-        sayHello_method.invokeExact(count, arena.allocateUtf8String(msg));
+        sayHello_method.invokeExact(count, allocateUtf8String(arena, msg));
         
     }
 }
